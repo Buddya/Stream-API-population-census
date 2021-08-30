@@ -22,7 +22,7 @@ public class Main {
 
     public static void getPplUnder18(Collection<Person> persons) {
         System.out.println("Количество несовершеннолетних:");
-        long lessThan18 = persons.stream().filter(value -> value.getAge() < 18)
+        long lessThan18 = persons.stream().filter(p -> p.getAge() < 18)
                 .limit(10) // <- delete this for full list
                 .count();
         System.out.println(lessThan18);
@@ -31,8 +31,8 @@ public class Main {
     public static void getRecruitList(Collection<Person> persons) {
         System.out.println("Список фамилий призывников:");
         List<String> listOfRecruits = persons.stream()
-                .filter(value -> value.getSex() == (Sex.MAN))
-                .filter(value -> (value.getAge() >= 18 && value.getAge() <= 27))
+                .filter(p -> p.getSex() == (Sex.MAN))
+                .filter(p -> (p.getAge() >= 18 && p.getAge() <= 27))
                 .limit(10) // <- delete this for full list
                 .map(Person::getFamily)
                 .collect(Collectors.toList());
